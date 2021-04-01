@@ -1,15 +1,15 @@
 package exceptions;
 
-public class DayNotCorresponding extends Exception{
+public class DayNotCorrespondingException extends Exception{
 
     int penultimateNumber;
     int monthNumber;
 
-    public DayNotCorresponding(int idPenultimateNumber, int monthNumber) {
+    public DayNotCorrespondingException(int idPenultimateNumber, int monthNumber) {
         super("No le corresponde el día de acuerdo a su penúltimo número de cédula y día del mes");
         this.penultimateNumber = idPenultimateNumber;
         this.monthNumber = monthNumber;
-    }//End DayNotCorresponding
+    }//End DayNotCorrespondingException
 
     public int getPenultimateNumber() {
         return penultimateNumber;
@@ -19,4 +19,4 @@ public class DayNotCorresponding extends Exception{
         return monthNumber;
     }//End getMonthNumber
 
-}//End DayNotCorresponding class
+}//End DayNotCorrespondingException class

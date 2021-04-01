@@ -1,6 +1,6 @@
 package model;
 
-import exceptions.DayNotCorresponding;
+import exceptions.DayNotCorrespondingException;
 import exceptions.UnderAgeException;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class EntranceManagerTest {
         try{
             myManager.registerPerson(idNumber, idT, monthDay);
             assertEquals(1, myManager.getRegisteredPersons().size());
-        } catch (DayNotCorresponding dnc) {
+        } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number an month day");
         } catch (UnderAgeException uae) {
             fail("An under-age person cannot be registered");
@@ -40,7 +40,7 @@ public class EntranceManagerTest {
         try{
             myManager.registerPerson(idNumber, idT, monthDay);
             assertEquals(1, myManager.getRegisteredPersons().size());
-        } catch (DayNotCorresponding dnc) {
+        } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number an month day");
         } catch (UnderAgeException uae) {
             fail("An under-age person cannot be registered");
@@ -58,7 +58,7 @@ public class EntranceManagerTest {
         try{
             myManager.registerPerson(idNumber, idT, monthDay);
             assertEquals(1, myManager.getRegisteredPersons().size());
-        } catch (DayNotCorresponding dnc) {
+        } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number an month day");
         } catch (UnderAgeException uae) {
             fail("An under-age person cannot be registered");
@@ -75,7 +75,7 @@ public class EntranceManagerTest {
         int monthDay = 4;
         try{
             myManager.registerPerson(idNumber, idT, monthDay);
-        } catch (DayNotCorresponding dnc) {
+        } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number an month day");
         } catch (UnderAgeException uae) {
             fail("An under-age person cannot be registered");
@@ -93,7 +93,7 @@ public class EntranceManagerTest {
         int monthDay = 3;
         try{
             myManager.registerPerson(idNumber, idT, monthDay);
-        } catch (DayNotCorresponding dnc) {
+        } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number and month day");
         } catch (UnderAgeException uae) {
             fail("An under-age person cannot be registered");
@@ -111,7 +111,7 @@ public class EntranceManagerTest {
         int monthDay = 4;
         try{
             myManager.registerPerson(idNumber, idT, monthDay);
-        } catch (DayNotCorresponding dnc) {
+        } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number and month day");
         } catch (UnderAgeException uae) {
             fail("An under-age person cannot be registered");

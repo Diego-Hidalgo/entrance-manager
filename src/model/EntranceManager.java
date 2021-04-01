@@ -1,6 +1,6 @@
 package model;
 
-import exceptions.DayNotCorresponding;
+import exceptions.DayNotCorrespondingException;
 import exceptions.UnderAgeException;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class EntranceManager {
         return registeredPersons;
     }//End getRegisteredPersons
 
-    public void registerPerson(String idNumber, String idT, int monthDay) throws DayNotCorresponding, UnderAgeException {
+    public void registerPerson(String idNumber, String idT, int monthDay) throws DayNotCorrespondingException, UnderAgeException {
         setCountAttempts(getCountAttempts()+1);
         IdType idType = IdType.valueOf(idT);
         if(idType == IdType.TI) {
@@ -40,7 +40,7 @@ public class EntranceManager {
         }//End if
         int penultimateIdNumber = Integer.parseInt(String.valueOf(idNumber.charAt(idNumber.length()-2)));
         if((penultimateIdNumber%2 == 0 && monthDay%2 == 0) || (penultimateIdNumber%2 != 0 && monthDay%2 != 0)) {
-            throw new DayNotCorresponding(penultimateIdNumber, monthDay);
+            throw new DayNotCorrespondingException(penultimateIdNumber, monthDay);
         }//End if
         Person person = new Person(idNumber, idType);
         registeredPersons.add(person);
