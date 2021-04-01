@@ -1,8 +1,10 @@
 package ui;
 
+import exceptions.DayNotCorrespondingException;
+import exceptions.UnderAgeException;
 import model.EntranceManager;
-
 import java.io.*;
+import java.time.LocalDate;
 
 public class Menu {
 
@@ -34,8 +36,32 @@ public class Menu {
         return option;
     }//End readOption
 
-    public void registerPerson() {
-
+    public void registerPerson() throws IOException {
+        bw.write("Tipo de documento (Solo las iniciales): ");
+        bw.flush();
+        String idType = br.readLine().toUpperCase();
+        while(!idType.equals("TI") && !idType.equals("CC") && !idType.equals("PP") && !idType.equals("CE")) {
+            bw.write("Tipo de documento inválido. Los tipos válidos son: \nTI-Tarjeta de Identidad " +
+                    "\nCC-Cédula de Ciudadanía \nPP-Pasaporte \nCE-Cédula de Extranjería \n: ");
+            bw.flush();
+            idType = br.readLine().toUpperCase();
+        }//End while
+        bw.write("Número de documento: ");
+        bw.flush();
+        String idNumber = br.readLine();
+        int monthNumber = LocalDate.now().getDayOfMonth();
+        try {
+            manager.registerPerson(idNumber, idType, monthNumber);
+            bw.write("Ingreso registrado correctamente \n");
+            bw.flush();
+        } catch (UnderAgeException uae) {
+            bw.write("No se pudo registrar el ingreso." + uae.getMessage());
+            bw.flush();
+        } catch (DayNotCorrespondingException dne) {
+            bw.write(dne.getMessage() + "\n#Día del mes: " + dne.getMonthNumber() +
+                    "\nPenúltima cifra del documento: " + dne.getPenultimateNumber());
+            bw.flush();
+        }
     }//End registerPerson
 
     public void consultAttempts() {
@@ -65,6 +91,8 @@ public class Menu {
             option = readOption();
             doOperation(option);
         } while(option != 3);
+        bw.close();
+        br.close();
     }//End startProgram
 
 }//End menu class
