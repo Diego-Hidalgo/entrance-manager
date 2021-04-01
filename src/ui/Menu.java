@@ -80,7 +80,7 @@ public class Menu {
             case EXIT:
                 break;
             default:
-                bw.write("Opción inválida");
+                bw.write("Opción inválida\n");
                 bw.flush();
         }//End switch
     }//End doOperation

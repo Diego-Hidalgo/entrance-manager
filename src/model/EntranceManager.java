@@ -38,7 +38,7 @@ public class EntranceManager {
         if(idType == IdType.TI) {
             throw new UnderAgeException();
         }//End if
-        int penultimateIdNumber = (idNumber.length() == 0)?Integer.parseInt(idNumber.substring(idNumber.length()-2)):Integer.parseInt(idNumber);
+        int penultimateIdNumber = (idNumber.length() == 1)?Integer.parseInt(idNumber):Integer.parseInt(String.valueOf(idNumber.charAt(idNumber.length()-2)));
         if((penultimateIdNumber%2 == 0 && monthNumber%2 == 0) || (penultimateIdNumber%2 != 0 && monthNumber%2 != 0)) {
             throw new DayNotCorrespondingException(penultimateIdNumber, monthNumber);
         }//End if

@@ -20,7 +20,7 @@ public class EntranceManagerTest {
         String idT = "CC";
         int monthDay = 3;
         try{
-            myManager.registerPerson(idNumber, idT, monthDay);
+            myManager.registerPerson(idT, idNumber, monthDay);
             assertEquals(1, myManager.getRegisteredPersons().size());
         } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number an month day");
@@ -38,7 +38,7 @@ public class EntranceManagerTest {
         String idT = "PP";
         int monthDay = 4;
         try{
-            myManager.registerPerson(idNumber, idT, monthDay);
+            myManager.registerPerson(idT, idNumber, monthDay);
             assertEquals(1, myManager.getRegisteredPersons().size());
         } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number an month day");
@@ -56,7 +56,7 @@ public class EntranceManagerTest {
         String idT = "CE";
         int monthDay = 2;
         try{
-            myManager.registerPerson(idNumber, idT, monthDay);
+            myManager.registerPerson(idT, idNumber, monthDay);
             assertEquals(1, myManager.getRegisteredPersons().size());
         } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number an month day");
@@ -74,7 +74,7 @@ public class EntranceManagerTest {
         String idT = "TI";
         int monthDay = 4;
         try{
-            myManager.registerPerson(idNumber, idT, monthDay);
+            myManager.registerPerson(idT, idNumber, monthDay);
         } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number an month day");
         } catch (UnderAgeException uae) {
@@ -92,7 +92,7 @@ public class EntranceManagerTest {
         String idT = "CE";
         int monthDay = 3;
         try{
-            myManager.registerPerson(idNumber, idT, monthDay);
+            myManager.registerPerson(idT, idNumber, monthDay);
         } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number and month day");
         } catch (UnderAgeException uae) {
@@ -110,7 +110,7 @@ public class EntranceManagerTest {
         String idT = "CC";
         int monthDay = 4;
         try{
-            myManager.registerPerson(idNumber, idT, monthDay);
+            myManager.registerPerson(idT, idNumber, monthDay);
         } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number and month day");
         } catch (UnderAgeException uae) {
