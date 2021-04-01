@@ -34,13 +34,13 @@ public class EntranceManager {
 
     public void registerPerson(String idNumber, String idT, int monthDay) throws DayNotCorresponding, UnderAgeException {
         setCountAttempts(getCountAttempts()+1);
-        int penultimateIdNumber = Integer.parseInt(String.valueOf(idNumber.charAt(idNumber.length()-2)));
-        if((penultimateIdNumber%2 == 0 && monthDay == 0) || (penultimateIdNumber%2 != 0 && monthDay != 0)) {
-            throw new DayNotCorresponding(penultimateIdNumber, monthDay);
-        }//End if
         IdType idType = IdType.valueOf(idT);
         if(idType == IdType.TI) {
             throw new UnderAgeException();
+        }//End if
+        int penultimateIdNumber = Integer.parseInt(String.valueOf(idNumber.charAt(idNumber.length()-2)));
+        if((penultimateIdNumber%2 == 0 && monthDay%2 == 0) || (penultimateIdNumber%2 != 0 && monthDay%2 != 0)) {
+            throw new DayNotCorresponding(penultimateIdNumber, monthDay);
         }//End if
         Person person = new Person(idNumber, idType);
         registeredPersons.add(person);
