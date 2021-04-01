@@ -32,17 +32,17 @@ public class EntranceManager {
         return registeredPersons;
     }//End getRegisteredPersons
 
-    public void registerPerson(String idNumber, String idT, int monthNumber) throws DayNotCorrespondingException, UnderAgeException {
+    public void registerPerson(String idT, String idNumber, int monthNumber) throws DayNotCorrespondingException, UnderAgeException {
         setCountAttempts(getCountAttempts()+1);
         IdType idType = IdType.valueOf(idT);
         if(idType == IdType.TI) {
             throw new UnderAgeException();
         }//End if
-        int penultimateIdNumber = Integer.parseInt(String.valueOf(idNumber.charAt(idNumber.length()-2)));
+        int penultimateIdNumber = (idNumber.length() == 0)?Integer.parseInt(idNumber.substring(idNumber.length()-2)):Integer.parseInt(idNumber);
         if((penultimateIdNumber%2 == 0 && monthNumber%2 == 0) || (penultimateIdNumber%2 != 0 && monthNumber%2 != 0)) {
             throw new DayNotCorrespondingException(penultimateIdNumber, monthNumber);
         }//End if
-        Person person = new Person(idNumber, idType);
+        Person person = new Person(idType, idNumber);
         registeredPersons.add(person);
     }//End registeredPerson
 

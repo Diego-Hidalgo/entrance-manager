@@ -51,21 +51,22 @@ public class Menu {
         String idNumber = br.readLine();
         int monthNumber = LocalDate.now().getDayOfMonth();
         try {
-            manager.registerPerson(idNumber, idType, monthNumber);
+            manager.registerPerson(idType, idNumber, monthNumber);
             bw.write("Ingreso registrado correctamente \n");
             bw.flush();
         } catch (UnderAgeException uae) {
-            bw.write("No se pudo registrar el ingreso." + uae.getMessage());
+            bw.write("No se pudo registrar el ingreso." + uae.getMessage() + "\n");
             bw.flush();
         } catch (DayNotCorrespondingException dne) {
             bw.write(dne.getMessage() + "\n#Día del mes: " + dne.getMonthNumber() +
-                    "\nPenúltima cifra del documento: " + dne.getPenultimateNumber());
+                    "\nPenúltima cifra del documento: " + dne.getPenultimateNumber() + "\n");
             bw.flush();
         }
     }//End registerPerson
 
-    public void consultAttempts() {
-
+    public void consultAttempts() throws IOException {
+        bw.write("Intentos de ingreso totales: " + manager.getCountAttempts() + "\n");
+        bw.flush();
     }//End consultAttempts
 
     public void doOperation(int option) throws IOException {
