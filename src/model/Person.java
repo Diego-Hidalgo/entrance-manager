@@ -26,4 +26,4 @@ public class Person {
         return idType;
     }//End getIdType
 
-}//End class Person
+}//End Person class
