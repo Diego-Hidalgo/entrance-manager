@@ -1,0 +1,7 @@
+package model;
+
+public enum IdType {
+
+    TI, CC, PP, CE
+
+}//End enum idType
