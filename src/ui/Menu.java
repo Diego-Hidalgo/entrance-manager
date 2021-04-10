@@ -37,7 +37,7 @@ public class Menu {
     }//End readOption
 
     public void registerPerson() throws IOException {
-        bw.write("Tipo de documento (Solo las iniciales): ");
+        bw.write("...\nTipo de documento (Solo las iniciales): ");
         bw.flush();
         String idType = br.readLine().toUpperCase();
         while(!idType.equals("TI") && !idType.equals("CC") && !idType.equals("PP") && !idType.equals("CE")) {
@@ -61,12 +61,18 @@ public class Menu {
             bw.write(dne.getMessage() + "\n#Día del mes: " + dne.getMonthNumber() +
                     "\nPenúltima cifra del documento: " + dne.getPenultimateNumber() + "\n");
             bw.flush();
-        }
+        } finally {
+            bw.write("...");
+            bw.flush();
+            br.readLine();
+        }//End finally
     }//End registerPerson
 
     public void consultAttempts() throws IOException {
-        bw.write("Intentos de ingreso totales: " + manager.getCountAttempts() + "\n");
+        bw.write("...\nIntentos de ingreso totales: " + manager.getCountAttempts() + "\n");
+        bw.write("...");
         bw.flush();
+        br.readLine();
     }//End consultAttempts
 
     public void doOperation(int option) throws IOException {
