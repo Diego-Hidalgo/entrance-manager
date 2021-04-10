@@ -75,14 +75,13 @@ public class EntranceManagerTest {
         int monthDay = 4;
         try{
             myManager.registerPerson(idT, idNumber, monthDay);
+            fail("An under-age person cannot be registered");
         } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number an month day");
         } catch (UnderAgeException uae) {
-            fail("An under-age person cannot be registered");
-        } finally {
             assertEquals(1, myManager.getCountAttempts());
-        }//End finally
-        assertEquals(0,myManager.getRegisteredPersons().size());
+            assertEquals(0, myManager.getRegisteredPersons().size());
+        }//End catch
     }//End testRegisterPerson2
 
     @Test
@@ -93,14 +92,13 @@ public class EntranceManagerTest {
         int monthDay = 3;
         try{
             myManager.registerPerson(idT, idNumber, monthDay);
-        } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number and month day");
+        } catch (DayNotCorrespondingException dnc) {
+            assertEquals(1, myManager.getCountAttempts());
+            assertEquals(0,myManager.getRegisteredPersons().size());
         } catch (UnderAgeException uae) {
             fail("An under-age person cannot be registered");
-        } finally {
-            assertEquals(1, myManager.getCountAttempts());
-        }//End finally
-        assertEquals(0,myManager.getRegisteredPersons().size());
+        }//End catch
     }//End testRegisterPerson3
 
     @Test
@@ -111,14 +109,13 @@ public class EntranceManagerTest {
         int monthDay = 4;
         try{
             myManager.registerPerson(idT, idNumber, monthDay);
-        } catch (DayNotCorrespondingException dnc) {
             fail("Day not corresponding according to the penultimate id number and month day");
+        } catch (DayNotCorrespondingException dnc) {
+            assertEquals(1, myManager.getCountAttempts());
+            assertEquals(0,myManager.getRegisteredPersons().size());
         } catch (UnderAgeException uae) {
             fail("An under-age person cannot be registered");
-        } finally {
-            assertEquals(1, myManager.getCountAttempts());
-        }//End finally
-        assertEquals(0,myManager.getRegisteredPersons().size());
+        }//End catch
     }//End testRegisterPerson4
 
 }//End EntranceManagerTest
